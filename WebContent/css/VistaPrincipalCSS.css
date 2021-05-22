@@ -1,0 +1,42 @@
+body{
+    background-color: #12F8AD;
+}
+.project-text{
+    color:#2A2B38;
+    margin-top: 5%;
+    font-weight: bold;
+    padding-left: 1.5%;
+}
+.row{
+    background-color: #2A2B38;
+}
+.div-inf{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: white;
+    padding-left: 2%;
+}
+.group-list{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: white;
+    padding-right: 2%
+}
+a{
+    color: #12F8AD;
+    font-weight: bold; 
+}
+a:hover{
+    color:#119b6d; 
+    font-weight: bold; 
+}
+.fixed-bottom{
+    border-top-style:solid;
+    border-top-color: #2A2B38;
+    border-radius: 0.05cm;
+}
+.text{
+    color:#2A2B38;
+    font-weight: bold;
+    margin-left: 1%;
+}
