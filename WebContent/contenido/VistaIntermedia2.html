@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/VistaIntermedia2.css">
+        <title>Notas OnLine</title>
+    </head>
+    <body>
+         <script src="../bootstrap/bootstrap.min.js"></script> 
+        <div class="header">
+            <div class="text-center">
+                <h1>Notas Online: Asignaturas</h1>
+            </div>
+                <div class="row">
+                    <div class="">
+                        <div class= "inf-user text-center">
+                            <div class="user-heading">
+                                <div class="user-img">
+                                    <img src="login.png" class="foto" />
+                                </div>
+                                <div class="user-data">
+                                    <div class="user-info">
+                                        <h4> Alumno: Pepe </h4>
+                                        <h4>DNI: 12345678W</h4>
+                                        <div class="row">
+                                            <div class="rows">
+                                                <div class="container">
+                                                    <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="DEW-tab" data-bs-toggle="tab" data-bs-target="#DEW" type="button" role="tab" aria-controls="DEW" aria-selected="true">DEW</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="DCU-tab" data-bs-toggle="tab" data-bs-target="#DCU" type="button" role="tab" aria-controls="DCU" aria-selected="false">DCU</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="IAP-tab" data-bs-toggle="tab" data-bs-target="#IAP" type="button" role="tab" aria-controls="IAP" aria-selected="false">IAP</button>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content" id="ex1-content">
+                                                        <div class="tab-pane" id="DEW" role="tabpanel" aria-labelledby="DEW-tab">
+                                                            <h4>Desarrollo web</h4>
+                                                            <p>Nota obtenida:</p>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="DCU" role="tabpanel" aria-labelledby="DCU-tab">
+                                                            <h4>DCU</h4>
+                                                            <p>Nota obtenida:</p>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="IAP" role="tabpanel" aria-labelledby="IAP-tab">
+                                                            <h4>IAP</h4>
+                                                            <p>Nota obtenida:</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row inf-extra">
+                                    <p>En esta página se muestran las asignaturas en las que estás matriculad@. Al pulsar en una podrás acceder a tu calificación</p>>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="fixed-bottom text-center">
+            <p class="text">Trabajo en grupo realizado para la asignatura Desarrollo Web. Curso 2020-2021</p>
+        </div>
+        <script>
+            $('#myTab a').on('click', function (e) {
+             e.preventDefault()
+             $(this).tab('show')
+            })
+        </script>
+    </body>
+</html>

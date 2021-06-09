@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+  }
+  
+  * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  
+  .page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subpage {
+    padding: 1cm;
+    border: 5px red solid;
+    height: 256mm;
+    outline: 2cm #FFEAEA solid;
+  }
+  
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  @media print {
+    .page {
+      margin: 0;
+      border: initial;
+      border-radius: initial;
+      width: initial;
+      min-height: initial;
+      box-shadow: initial;
+      background: initial;
+      page-break-after: always;
+    }
+  }
+.rows{
+    background-color: #2A2B38;
+    color: white;
+}
+.foto{
+    width: 175px;
+    height: 175px;
+    border-radius: 170px;
+}
+.columns{
+    background-color: #2A2B38;
+    padding-top: 10px;
+    font-weight: bold;
+    border-width: 2px;
+    border-style:inset;
+    border-color: #2A2B38;
+    color: white;
+}
+.table-row{
+    border-width: 2px;
+    border-style:inset;
+    border-color: #2A2B38;
+    background-color: #12F8AD;
+    color:#2A2B38;
+}
+.sub-header{
+    margin-top: 30px;
+}
+.negrita{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.paragraph{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: justify;
+}
+.inf-row{
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+.filas{
+    margin-top: 3%;
+    text-align: right;
+}
+.bottom{
+    position: relative;
+    bottom: -470px;
+}

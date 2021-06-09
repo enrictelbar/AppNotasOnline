@@ -1,0 +1,37 @@
+body{
+    background-color: #12F8AD;
+}
+.main-text{
+    color:#2A2B38;
+    font-weight: bold;
+    padding-left: 1%;
+    margin-top: 2%;
+}
+.sub-encabezado{
+    padding-left: 1%;
+}
+.row{
+    background-color: #2A2B38;
+    padding-bottom: 3%;
+    padding-top:3%;
+    color: white;
+    padding-left: 10%;
+}
+.btn-primary{
+    font-weight: bold;
+    background-color:#12F8AD ;
+    border-color: #12F8AD;
+    color: #2A2B38;
+}
+.btn-primary:hover{
+    background-color: #119b6d;
+    border-color: #119b6d;
+    
+}
+.fixed-bottom{
+    border-top-style:solid;
+    border-top-color: #2A2B38;
+    border-radius: 0.05cm;
+    font-weight: bold;
+    padding-left: 1.5%;
+}
