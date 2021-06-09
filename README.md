@@ -17,4 +17,5 @@ JavaScript, Java, Ajax, XML, HTML
 <user username="Laura" password="1234" roles="rolalu"/>
 <user username="Minerva" password="1234" roles="rolalu"/>
 ```
-3. Aplicación exportada en formato .war, creada en eclipse y desplegada usando Tomcat v9.0.
+3. Servlets API 2.5
+4. Aplicación exportada en formato .war, creada en eclipse y desplegada usando Tomcat v9.0
