@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es-es">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="css/VistaIntermedia.css">
+        <title>Notas OnLine</title>
+    </head>
+    <body>
+        <script src="bootstrap/bootstrap.min.js"></script>
+        <div class="main">
+            <div class="col-sm-12">
+                <div class="main-text">
+                    <h1>Notas Online. Asignaturas <br /> del/la alumn@ Pepe García Sánchez</h1>
+                    <p>En esta página se muestran las asignaturas en las que estás matriculad@.</p>
+                    <p>Al pulsar en una podrás acceder a tu calificación</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="container">
+                            <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="DEW-tab" data-bs-toggle="tab" data-bs-target="#DEW" type="button" role="tab" aria-controls="DEW" aria-selected="true">DEW</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="DCU-tab" data-bs-toggle="tab" data-bs-target="#DCU" type="button" role="tab" aria-controls="DCU" aria-selected="false">DCU</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="IAP-tab" data-bs-toggle="tab" data-bs-target="#IAP" type="button" role="tab" aria-controls="IAP" aria-selected="false">IAP</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="ex1-content">
+                                <div class="tab-pane fade show active" id="DEW" role="tabpanel" aria-labelledby="DEW-tab">
+                                    <h4>Desarrolo web</h4>
+                                    <p>Nota obtenida:</p>
+                                </div>
+                                <div class="tab-pane fade" id="DCU" role="tabpanel" aria-labelledby="DCU-tab">
+                                    <h4>DCU</h4>
+                                    <p>Nota obtenida:</p>
+                                </div>
+                                <div class="tab-pane fade" id="IAP" role="tabpanel" aria-labelledby="IAP-tab">
+                                    <h4>IAP</h4>
+                                    <p>Nota obtenida:</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 group-list">
+                        <h4>Grupo g6_labo_Miercoles_13:00</h4>
+                        <ol>
+                            <li>Conejero Puche, Francisco Javier</li>
+                            <li>Martí Pastor, David</li>
+                            <li>Moriche Montejano, David</li>
+                            <li>Piquer Garcia, Isaac Gabriel</li>
+                            <li>Sánchez Cuevas, Alejandro</li>
+                            <li>Tello Barbé, Enrique</li>
+                        </ol>
+                    </div>
+                </div> 
+            </div>
+            <div class="fixed-bottom">
+                <p class="text">Trabajo en grupo realizado para la asignatura Desarrollo Web. Curso 2020-2021</p>
+            </div>
+        </div>
+        <script>
+            $('#myTab a').on('click', function (e) {
+             e.preventDefault()
+             $(this).tab('show')
+            })
+        </script>
+    </body>
+</html>

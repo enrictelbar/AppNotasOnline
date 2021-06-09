@@ -1,0 +1,49 @@
+</div>
+<div class="row">
+    <div clas=" col-sm-12 text-center">
+        <h3 class="Nota-media">Nota Media: <span id="notaMedia"></span></h3>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Este es el div que aparecerá para interaccionar con las notas mediante ajax -->
+<div class="window-notice" id="window-notice" style="display:none">
+<div class="container pop-up">
+<div class="text-center Pheader">
+    <div class="row header">
+    	<div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <h1 class="padding">Cambiar Nota</h1>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" id="cancel" class="cancel">X</button>
+        </div>
+    </div>
+</div>
+<div class="row  container-info">
+    <div class="col-sm-3">
+        <input type="image" src="../imagenes/arrowLeft.png" onmouseover="this.src='../imagenes/arrowLeftHover.png'" onmouseout="this.src='../imagenes/arrowLeft.png'" class="izq"/>
+    </div>
+    <div class="col-sm-6 text-center padding">
+    	<div class="user-img text-center">
+        	<img src="" class="foto" id="aqui"/>
+        </div>
+            <h2>Alumn@: <span id="alumno"></span></h2>
+        <form>
+            <input type="number" placeholder="Nota" id="nota" step="any" />
+            <button type="button" id="confirm" class="confirm">Confirmar cambios </button>
+        </form>
+    </div>
+    <div class="col-sm-3 text-center">
+        <input type="image" src="../imagenes/arrowRight.png" onmouseover="this.src='../imagenes/arrowRightHover.png'" onmouseout="this.src='../imagenes/arrowRight.png'" class="der"/>
+    </div>
+</div>
+</div>
+</div>
+<div class="fixed-bottom">
+<p class="text">Trabajo en grupo realizado para la asignatura Desarrollo Web. Curso 2020-2021</p>
+</div>
+</div>
+</body>
+</html>

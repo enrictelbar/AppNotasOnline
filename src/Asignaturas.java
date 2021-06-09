@@ -3,11 +3,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,14 +29,17 @@ public class Asignaturas extends HttpServlet {
      */
     public Asignaturas() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		/*
+		 * Utiliza la sesión actual para pedir las asignaturas en las que está matriculado el usuario.
+		*/
+		if(request.isUserInRole("rolalu")) {
 		String res = "";
 		PrintWriter out = response.getWriter();	
 		HttpSession session = request.getSession(false);
@@ -54,7 +55,7 @@ public class Asignaturas extends HttpServlet {
 		HttpURLConnection httpreq = (HttpURLConnection)urlpeticion.openConnection();
 		for (String cookie: cookies) {
 			httpreq.addRequestProperty("Cookie", cookie.split(";", 2)[0]); 
-			}
+		}
 		httpreq.setRequestMethod("GET");
 		httpreq.setRequestProperty("Content-Type", "application/json");
 		httpreq.setUseCaches(false);
@@ -68,14 +69,17 @@ public class Asignaturas extends HttpServlet {
 	              while ((responseLine = reader.readLine()) != null) {
 	                res += responseLine.trim();
 	              }       
-	             
+	             reader.close();
         }
-        //[{"asignatura":"DCU","nota":""},{"asignatura":"DEW","nota":""},{"asignatura":"IAP","nota":""}]
+        //Se obtiene algo como: [{"asignatura":"DCU","nota":""},{"asignatura":"DEW","nota":""},{"asignatura":"IAP","nota":""}]
         JSONArray asigJSON = new JSONArray(res);
         String nombre = request.getRemoteUser();
-        getServletContext().getRequestDispatcher("/Intermedio1.html").include(request, response);
-        out.println("<h1>Notas Online. Asignaturas <br /> del/la alumn@ "+ nombre +"</h1>");
-        getServletContext().getRequestDispatcher("/Intermedio2.html").include(request, response);
+        /*
+         * Creamos la página dinámicamente.
+         */
+        getServletContext().getRequestDispatcher("/contenido/Intermedio1.html").include(request, response);
+        out.println("<h4> Alumno: "+ nombre +"</h4>");       
+        getServletContext().getRequestDispatcher("/contenido/Intermedio2.html").include(request, response);
 
         for (int i = 0; i < asigJSON.length(); i++) {
 
@@ -98,10 +102,10 @@ public class Asignaturas extends HttpServlet {
             out.println("</div>");
              }
         out.println("</div>");
-        getServletContext().getRequestDispatcher("/Intermedio3.html").include(request, response);
+        getServletContext().getRequestDispatcher("/contenido/Intermedio3.html").include(request, response);
         out.close();
         httpreq.disconnect();
-		
+		} else { response.sendRedirect("http://dew-entelbar-2021.dsic.cloud:8080/nol2021/contenido/Error.html"); }
 	}
 
 	/**

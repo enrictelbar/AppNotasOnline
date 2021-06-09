@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>ProyectoDEW</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>VistaPrincipal.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
@@ -63,6 +63,10 @@
     <param-name>rArch</param-name>
     <param-value>/home/user/tomcat/temp/</param-value>
   </context-param>
+  <context-param>
+    <param-name>directorio_imagenes</param-name>
+    <param-value>/home/user/tomcat/fotos/</param-value>
+  </context-param>
   <servlet>
     <description></description>
     <display-name>PeticionHTTP</display-name>
@@ -89,20 +93,25 @@
     <servlet-name>AutenticacionSinHTML</servlet-name>
     <url-pattern>/AutenticacionSinHTML</url-pattern>
   </servlet-mapping>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>Protegido</realm-name>
+    <form-login-config>
+      <form-login-page>/contenido/Login.html</form-login-page>
+      <form-error-page>/contenido/Error.html</form-error-page>
+    </form-login-config>
+  </login-config>
   <security-constraint>
+    <display-name>Constraint1</display-name>
     <web-resource-collection>
-      <web-resource-name>AutenticacionSinHTML</web-resource-name>
-      <url-pattern>/*</url-pattern>
+      <web-resource-name>Autenticacion</web-resource-name>
+      <url-pattern>/contenido/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>rolpro</role-name>
       <role-name>rolalu</role-name>
     </auth-constraint>
   </security-constraint>
-  <login-config>
-    <auth-method>BASIC</auth-method>
-    <realm-name>Protegido</realm-name>
-  </login-config>
   <servlet>
     <description></description>
     <display-name>ListarAsignaturas</display-name>
@@ -111,7 +120,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ListarAsignaturas</servlet-name>
-    <url-pattern>/ListarAsignaturas</url-pattern>
+    <url-pattern>/contenido/ListarAsignaturas</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -121,7 +130,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Asignaturas</servlet-name>
-    <url-pattern>/Asignaturas</url-pattern>
+    <url-pattern>/contenido/Asignaturas</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -131,7 +140,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AsignaturasProfesor</servlet-name>
-    <url-pattern>/AsignaturasProfesor</url-pattern>
+    <url-pattern>/contenido/AsignaturasProfesor</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -141,7 +150,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ListaAlumnos</servlet-name>
-    <url-pattern>/ListaAlumnos</url-pattern>
+    <url-pattern>/contenido/ListaAlumnos</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -151,7 +160,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>CambiarNota</servlet-name>
-    <url-pattern>/CambiarNota</url-pattern>
+    <url-pattern>/contenido/CambiarNota</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -161,7 +170,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MostrarNota</servlet-name>
-    <url-pattern>/MostrarNota</url-pattern>
+    <url-pattern>/contenido/MostrarNota</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -171,6 +180,74 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>CambiarNota2</servlet-name>
-    <url-pattern>/CambiarNota2</url-pattern>
+    <url-pattern>/contenido/CambiarNota2</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>Registros</display-name>
+    <filter-name>Registros</filter-name>
+    <filter-class>Registros</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Registros</filter-name>
+    <url-pattern>/contenido/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>fotos</display-name>
+    <servlet-name>fotos</servlet-name>
+    <servlet-class>fotos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fotos</servlet-name>
+    <url-pattern>/fotos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogOut</display-name>
+    <servlet-name>LogOut</servlet-name>
+    <servlet-class>LogOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogOut</servlet-name>
+    <url-pattern>/LogOut</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>Autenticacion</display-name>
+    <filter-name>Autenticacion</filter-name>
+    <filter-class>Autenticacion</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Autenticacion</filter-name>
+    <url-pattern>/contenido/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PDF</display-name>
+    <servlet-name>PDF</servlet-name>
+    <servlet-class>PDF</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PDF</servlet-name>
+    <url-pattern>/contenido/PDF</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CambiarNotas</display-name>
+    <servlet-name>CambiarNotas</servlet-name>
+    <servlet-class>CambiarNotas</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CambiarNotas</servlet-name>
+    <url-pattern>/CambiarNotas</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAlumnos</display-name>
+    <servlet-name>GetAlumnos</servlet-name>
+    <servlet-class>GetAlumnos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAlumnos</servlet-name>
+    <url-pattern>/GetAlumnos</url-pattern>
   </servlet-mapping>
 </web-app>

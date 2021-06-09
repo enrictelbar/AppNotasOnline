@@ -44,7 +44,7 @@ public class PeticionHTTP extends HttpServlet {
 	        json.put("password", password);
 		} catch(JSONException ejson) { out.println("Error "+ejson);}
 		
-		URL url = new URL("http://dew-damarpa6-2021.dsic.cloud:9090/CentroEducativo/login");
+		URL url = new URL("http://dew-entelbar-2021.dsic.cloud:9090/CentroEducativo/login");
 				HttpURLConnection http = (HttpURLConnection)url.openConnection();
 				http.setRequestMethod("POST");
 				http.setRequestProperty("Content-Type", "application/json");
@@ -65,6 +65,7 @@ public class PeticionHTTP extends HttpServlet {
 	              while ((responseLine = reader.readLine()) != null) {
 	                res += responseLine.trim();
 	              }   
+	              reader.close();
 	              out.println("Res: "+res);
 		} catch(Exception e) {
             response.sendError(500, "Hubo problemas al recuperar la información." + e);

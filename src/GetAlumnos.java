@@ -15,18 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
- * Servlet implementation class AsignaturasProfesor
+ * Servlet implementation class GetAlumnos
  */
-public class AsignaturasProfesor extends HttpServlet {
+public class GetAlumnos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private String acro;   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AsignaturasProfesor() {
+    public GetAlumnos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,22 +34,25 @@ public class AsignaturasProfesor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.isUserInRole("rolpro")) {
+		// TODO Auto-generated method stub
+		if(request.isUserInRole("rolpro")) {
+					
 		String res = "";
+		//Obtiene la sesión y con ella la clave del usuario.
 		PrintWriter out = response.getWriter();	
-		
-		//Obtenemos la sesión.
 		HttpSession session = request.getSession(false);
-		String dni = (String) session.getAttribute("dni");
 		String key = (String) session.getAttribute("key");
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		List<String> cookies = (List<String>) session.getAttribute("Cookie");	
+		//Se procesa la asignatura recibida por el método POST para obtener su acrónimo.
+		String [] aux = acro.split("=");
+		acro = aux[1];
 		
-		//Creamos una conexión para pedir las asignaturas que imparte un profesor.
-		String urlreq = "http://dew-entelbar-2021.dsic.cloud:9090/CentroEducativo/profesores/"+dni+"/asignaturas?key="+key;
+		//Se crea una conexión para recibir los alumnos.
+		List<String> cookies = (List<String>) session.getAttribute("Cookie");	
+		String urlreq = "http://dew-entelbar-2021.dsic.cloud:9090/CentroEducativo/asignaturas/"+acro+"/alumnos?key="+key;
 		URL urlpeticion = new URL(urlreq);
 		HttpURLConnection httpreq = (HttpURLConnection)urlpeticion.openConnection();
 		for (String cookie: cookies) {
@@ -68,44 +70,29 @@ public class AsignaturasProfesor extends HttpServlet {
 	              String responseLine = null;
 	              while ((responseLine = reader.readLine()) != null) {
 	                res += responseLine.trim();
-	              }    
+	              }       
 	              reader.close();
         }
-
-        
-        JSONArray asigJSON = new JSONArray(res);   
-        
-        //Creamos la página dinámicamente
-        String nombre = request.getRemoteUser();
-        getServletContext().getRequestDispatcher("/contenido/AsigProf1.html").include(request, response);
-        out.println("<h4> Profesor: "+nombre+" </h4>");
-        out.println("</div>");
-        out.println("<div class=\"row rows\">");
-        
-        for (int i = 0; i < asigJSON.length(); i++) {
-       	
-            JSONObject object =(JSONObject) asigJSON.get(i);         
-            out.println("<div class=\"col-sm-4 div-inf\">");
-            out.println("<form action='ListaAlumnos'><h4>Acronimo: "+object.getString("acronimo")+"</h4><ul>");
-            out.println("<li>Nombre: "+object.getString("nombre")+"</li>");
-            out.println("<li>Curso: "+object.getInt("curso")+"</li>");
-            out.println("<li>Cuatrimestre: "+object.getString("cuatrimestre")+"</li>");
-            out.println("<li>Creditos: "+object.getFloat("creditos")+"</li></ul>");
-            out.println("<input type=\"hidden\" name=\"acronimo\" value=\""+object.getString("acronimo")+"\"/>");
-            out.println("<button type =\"submit\" class=\"btn btn-primary\">Ver Alumnos</button></form></div>"); 
-        }
-        getServletContext().getRequestDispatcher("/contenido/AsigProf2.html").include(request, response);  
-        out.close();
-        httpreq.disconnect();
+        JSONArray asigJSON = new JSONArray(res);
+		out.print(asigJSON);
+		out.close();	
 		} else { response.sendRedirect("http://dew-entelbar-2021.dsic.cloud:8080/nol2021/contenido/Error.html"); }
-	}   
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// Recibe la asignatura a la que pertenecen los alumnos que se piden.
+		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+		
+		String json = "";
+		if(br != null){
+			json = br.readLine();
+		}
+		br.close();
+		acro = json;
+		//Recibe "acronimo=IAP"
 	}
 
 }
