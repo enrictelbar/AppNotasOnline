@@ -1,6 +1,6 @@
 # Aplicación: Notas Online
 ## Lenguajes utilizados: 
-JavaScript, Java, Ajax, XML
+JavaScript, Java, Ajax, XML, HTML
 ## Notas:
 1. Directorio donde se guardan las imagenes en base64 de los usuarios ubicado en /home/user/tomcat/fotos.
 2. Fichero tomcat-users.xml usado:
